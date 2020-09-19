@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-Hack_NSU2-Vendor_Automation-",
+      "appliesTo": "/",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-Hack_NSU2-Vendor_Automation-",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}
