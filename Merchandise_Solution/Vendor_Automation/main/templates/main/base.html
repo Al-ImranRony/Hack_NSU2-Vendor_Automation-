@@ -18,8 +18,19 @@
         <a class="navbar-brand" href="{% url 'main-home' %}">Merchandise Solution</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="{% url 'main-home' %}">Home</a></li>
-        <li><a href="{% url 'main-products' %}">Products</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'main-home' %}">Home</a></li>
+          <li><a href="{% url 'main-products' %}">Products</a></li>
+          <li><a href="#">Budgets</a></li>
+          <li><a href="#">Requisition & Approval</a></li>
+          <li><a href="#">Purchase Order</a></li>
+          <li><a href="#">Purchase History</a></li>
+          <li><a href="#">Inventory</a></li>
+        {% else %}
+          <li><a href="{% url 'main-home' %}">Home</a></li>
+          <li><a href="{% url 'main-products' %}">Products</a></li>
+        {% endif %}
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
