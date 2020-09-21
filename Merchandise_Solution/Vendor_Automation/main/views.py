@@ -11,9 +11,10 @@ posts = [
 
 def home(request):
     context = {
-            'posts' : posts
-        }
+        'posts': posts
+    }
     return render(request, 'main/home.html', context)
+
 
 def products(request):
     return render(request, 'main/products.html')
