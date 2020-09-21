@@ -3,5 +3,5 @@ from .import views
 
 urlpatterns = [
     path('', views.home, name='main-home'),
-    # path('products/', views.products, name='main-products'),
+    path('products/', views.products, name='main-products'),
 ]
