@@ -22,7 +22,7 @@ from django.views.generic import (
 from django.views.generic.edit import FormMixin
 
 from .models import Product, ProductCategory
-from .forms import ProductForm, ProductCategoryForm
+# from .forms import ProductForm, ProductCategoryForm
 
 # Create your views here.
 
@@ -51,7 +51,8 @@ class ProductCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.vendor = self.request.user
-        # form.instance.category = self.
+        cpk = self.kwargs.get('cpk')
+        form.instance.category = ProductCategory.objects.filter(pk=cpk).first()
         return super().form_valid(form)
 
 
@@ -96,7 +97,8 @@ class ProductCategoryDetailView(DetailView):
     model = ProductCategory
 
     def get_context_data(self, **kwargs):
-        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context = super(ProductCategoryDetailView,
+                        self).get_context_data(**kwargs)
         category = ProductCategory.objects.filter(pk=self.kwargs.get('pk'))[0]
         context["products"] = Product.objects.filter(
             category=category).order_by('-product_counter')
