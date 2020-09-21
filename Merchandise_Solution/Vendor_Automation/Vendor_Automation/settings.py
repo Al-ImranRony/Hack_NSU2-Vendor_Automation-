@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
+    'products',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -133,9 +134,9 @@ LOGIN_URL = 'login'
 
 # Auth
 
-# AUTHENTICATION_BACKENDS = [    
-#     'django.contrib.auth.backends.ModelBackend',
-#     'allauth.account.auth_backends.AuthenticationBackend'
-# ]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
 
 SITE_ID = 1
