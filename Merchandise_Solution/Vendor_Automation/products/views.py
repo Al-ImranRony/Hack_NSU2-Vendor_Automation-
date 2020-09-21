@@ -51,7 +51,7 @@ class ProductCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.vendor = self.request.user
-        form.instance.category = ProductCategory.objects.all()
+        # form.instance.category = self.
         return super().form_valid(form)
 
 
