@@ -1,19 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, ProfileUpdateForm, UserUpdateForm
+from .forms import CreateUserForm, ProfileUpdateForm, UserUpdateForm
 
-def register(request):
+def registerPage(request):        
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Your acoount has been created ! You are now able to log in !')
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for ' + user)
             return redirect('login')
     else:
-        form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+        form = CreateUserForm()
+    context = {'form':form}
+    return render(request, 'users/register.html', context)
 
 @login_required
 def profile(request):

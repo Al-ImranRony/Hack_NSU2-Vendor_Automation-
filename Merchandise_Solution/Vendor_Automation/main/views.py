@@ -9,7 +9,7 @@ posts = [
 ]
 
 
-def home(request):
+def homePage(request):
     context = {
         'posts': posts
     }

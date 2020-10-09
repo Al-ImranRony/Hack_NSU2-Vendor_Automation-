@@ -4,14 +4,21 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
 
-class UserRegisterForm(UserCreationForm):
+class CreateUserForm(UserCreationForm):
     email = forms.EmailField()
-    company_name = forms.CharField(max_length=100)
-    cell = forms.IntegerField()
+    # company_name = forms.CharField(max_length=100)
+    # cell = forms.IntegerField()
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'company_name', 'cell', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
+
+    def save(self, commit=True):
+        user = super(CreateUserForm, self).save(commit=False)		
+        user.email = self.cleaned_data["email"]
+        if commit:		
+            user.save()
+        return user
 
 
 class UserUpdateForm(forms.ModelForm):
