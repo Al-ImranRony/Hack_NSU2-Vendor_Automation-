@@ -55,7 +55,7 @@
                                             <ul id="navigation">  
                                                 {% if user.is_authenticated %}                                                                                        
                                                     <li class="active" ><a href="{% url 'main-home' %}">Home</a></li>
-                                                    <li><a href="{% url 'main-products' %}">Products</a></li>
+                                                    <li><a href="#">Products</a></li>
                                                     <li><a href="#">Budgets</a></li>
                                                     <li><a href="#">Requisition & Approval</a></li>
                                                     <li><a href="#">Purchase</a></li>
@@ -71,7 +71,7 @@
                                                     <li class="button-header"><a href="{% url 'logout' %}" class="btn btn3">Logout</a></li>
                                                 {% else %}
                                                     <li class="active" ><a href="{% url 'main-home' %}">Home</a></li>
-                                                    <li><a href="{% url 'main-products' %}">Products</a></li>
+                                                    <li><a href="#">Products</a></li>
                                                     <li class="button-header margin-left "><a href="{% url 'register' %}" class="btn"> Register</a></li>
                                                     <li class="button-header"><a href="{% url 'login' %}" class="btn btn3">Login</a></li>
                                                 {% endif %}
